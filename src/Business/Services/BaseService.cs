@@ -99,7 +99,8 @@ namespace Business.Services
             return new SearchResponse<TEntity>()
             {
                 Items = response.Items,
-                RowsCount = response.TotalCount
+                RowsCount = response.TotalCount,
+                PageIndex = response.PageIndex
             };
         }
 
@@ -110,7 +111,7 @@ namespace Business.Services
                                                       int pageSize = 10)
         {
             var response = Search(filter, include, orderBy, pageIndex, pageSize);
-            return new SearchResponse<TOutputModel>(_mapper.Map<IEnumerable<TOutputModel>>(response.Items), response.RowsCount);
+            return new SearchResponse<TOutputModel>(_mapper.Map<IEnumerable<TOutputModel>>(response.Items), response.RowsCount, response.PageIndex);
         }
 
 
