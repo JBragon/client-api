@@ -8,7 +8,6 @@ using System.Text.Json.Serialization;
 using DataAccess.Context;
 using WebApi.Configurations;
 using FluentValidation.AspNetCore;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -94,3 +93,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//Necessário para o uso dos teste de integração
+public partial class Program { }

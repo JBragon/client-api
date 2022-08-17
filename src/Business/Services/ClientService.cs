@@ -19,7 +19,7 @@ namespace Business.Services
             var response = base.Search<TOutputModel>(
                filter.GetFilter(),
                include: null,
-               orderBy: filter.GetOrder(),
+               orderBy: null,
                filter.Page,
                filter.RowsPerPage
             );

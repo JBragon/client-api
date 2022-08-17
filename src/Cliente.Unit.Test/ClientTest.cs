@@ -13,7 +13,6 @@ namespace Client.Unit.Test
     {
         private readonly IClientService _clientService;
         private readonly Mock<IUnitOfWork<DBContext>> _unitOfWorkMock;
-        private readonly IMapper _mapper;
 
         public ClientTest()
         {
@@ -21,7 +20,6 @@ namespace Client.Unit.Test
 
             _clientService = fixture.ClientService;
             _unitOfWorkMock = fixture.unitOfWorkMock;
-            _mapper = fixture.mapper;
         }
 
         #region CRUD
@@ -40,7 +38,7 @@ namespace Client.Unit.Test
 
             var result = _clientService.Create<Models.Business.Client>(Client);
 
-            Assert.True(result != null);
+            Assert.True(result is not null);
             Assert.IsType<Models.Business.Client>(result);
             _unitOfWorkMock.Verify(uow => uow.SaveChanges(false), Times.Once);
         }
@@ -51,7 +49,7 @@ namespace Client.Unit.Test
         {
             var result = _clientService.GetById<Models.Business.Client>(Id);
 
-            Assert.True(result != null);
+            Assert.True(result is not null);
             Assert.True(result.Id == Id);
             Assert.IsType<Models.Business.Client>(result);
         }

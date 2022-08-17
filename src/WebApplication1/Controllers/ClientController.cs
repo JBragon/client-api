@@ -17,7 +17,7 @@ namespace WebApi.Controllers
             _clientService = clientService;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public IActionResult Get([FromQuery] ClientFilter clientFilter)
         {
             return Execute(() => _clientService.Search<ClientResponse>(clientFilter), 200, true);

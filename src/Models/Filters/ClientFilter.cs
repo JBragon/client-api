@@ -19,22 +19,5 @@ namespace Models.Filters
             return filter;
         }
 
-        public Func<IQueryable<Client>, IOrderedQueryable<Client>> GetOrder()
-        {
-            if (!string.IsNullOrEmpty(Sort))
-            {
-                var sort = string.Concat(Sort, ":", SortDir).Split(',');
-
-                foreach (var property in sort)
-                {
-                    //Verificar se existe o separador ':'
-                    var field = property.Split(':');
-
-                    //Verificar se o atributo existe  
-                    order = source => source.OrderByProperty(field[0], field[1].ToUpper() == "ASC");
-                }
-            }
-            return order;
-        }
     }
 }
