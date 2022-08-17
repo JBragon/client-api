@@ -38,7 +38,7 @@ namespace Client.Unit.Test
 
             var result = _clientService.Create<Models.Business.Client>(Client);
 
-            Assert.True(result is not null);
+            Assert.NotNull(result);
             Assert.IsType<Models.Business.Client>(result);
             _unitOfWorkMock.Verify(uow => uow.SaveChanges(false), Times.Once);
         }
@@ -49,7 +49,7 @@ namespace Client.Unit.Test
         {
             var result = _clientService.GetById<Models.Business.Client>(Id);
 
-            Assert.True(result is not null);
+            Assert.NotNull(result);
             Assert.True(result.Id == Id);
             Assert.IsType<Models.Business.Client>(result);
         }
@@ -60,7 +60,7 @@ namespace Client.Unit.Test
         {
             var result = _clientService.GetById<Models.Business.Client>(Id);
 
-            Assert.True(result == null);
+            Assert.Null(result);
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace Client.Unit.Test
 
             var result = _clientService.Update<Models.Business.Client>(Client);
 
-            Assert.True(result != null);
+            Assert.NotNull(result);
             Assert.IsType<Models.Business.Client>(result);
             _unitOfWorkMock.Verify(uow => uow.SaveChanges(false), Times.Once);
         }

@@ -4,6 +4,7 @@ using Models.Infrastructure;
 using Models.Mapper.Request;
 using Models.Mapper.Response;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
 using System.Text;
 using Xunit;
 
@@ -27,13 +28,12 @@ namespace Client.Integration.Test
             // Act
             var response = await client.GetAsync($"/api/Client");
 
-            var data = await response.Content.ReadAsStringAsync();
-            var clients = JsonConvert.DeserializeObject<SearchResponse<ClientResponse>>(data);
+            var clients = await response.ReadContentAs<SearchResponse<ClientResponse>>();
 
             // Assert
             response.EnsureSuccessStatusCode(); // Status Code 200-299
 
-            Assert.True(clients is not null);
+            Assert.NotNull(clients);
             Assert.IsType<SearchResponse<ClientResponse>>(clients);
         }
 
@@ -58,19 +58,15 @@ namespace Client.Integration.Test
                 Estado = uf
             };
 
-            var json = JsonConvert.SerializeObject(post);
-            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-
             // Act
-            var response = await client.PostAsync($"/api/Client", stringContent);
+            var response = await client.PostAsJsonAsync($"/api/Client", post);
 
-            var data = await response.Content.ReadAsStringAsync();
-            var clienteRegistered = JsonConvert.DeserializeObject<ClientResponse>(data);
+            var clienteRegistered = await response.ReadContentAs<ClientResponse>();
 
             // Assert
             response.EnsureSuccessStatusCode(); // Status Code 200-299
 
-            Assert.True(clienteRegistered is not null);
+            Assert.NotNull(clienteRegistered);
             Assert.IsType<ClientResponse>(clienteRegistered);
 
         }
@@ -88,14 +84,11 @@ namespace Client.Integration.Test
                 Estado = "RR"
             };
 
-            var json = JsonConvert.SerializeObject(post);
-            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-
             // Act
-            var response = await client.PostAsync($"/api/Client", stringContent);
+            var response = await client.PostAsJsonAsync($"/api/Client", post);
 
             // Assert
-            Assert.True(response.IsSuccessStatusCode is false);
+            Assert.False(response.IsSuccessStatusCode);
 
         }
     }
