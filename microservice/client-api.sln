@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "src\Resources\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Unit.Test", "src\Cliente.Unit.Test\Client.Unit.Test.csproj", "{22E427DC-ECD9-4DFA-9129-0E02C7BCEA08}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\WebApplication1\WebApi.csproj", "{BCABDA23-7C37-4A84-BE18-ED818D28B607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\WebApi\WebApi.csproj", "{BCABDA23-7C37-4A84-BE18-ED818D28B607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Integration.Test", "Client.Integration.Test\Client.Integration.Test.csproj", "{0BF46328-3191-416C-A5EF-1A98744E99BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Integration.Test", "src\Client.Integration.Test\Client.Integration.Test.csproj", "{0BF46328-3191-416C-A5EF-1A98744E99BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
