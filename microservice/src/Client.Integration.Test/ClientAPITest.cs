@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Models.Infrastructure;
 using Models.Mapper.Request;
 using Models.Mapper.Response;
-using Newtonsoft.Json;
 using System.Net.Http.Json;
-using System.Text;
 using Xunit;
 
 namespace Client.Integration.Test
@@ -54,8 +52,8 @@ namespace Client.Integration.Test
             ClientPost post = new ClientPost
             {
                 CPF = CPFUtils.GerarCpf(),
-                Nome = $"IntegrationTest-Client {Guid.NewGuid()}",
-                Estado = uf
+                Name = $"IntegrationTest-Client {Guid.NewGuid()}",
+                State = uf
             };
 
             // Act
@@ -80,8 +78,8 @@ namespace Client.Integration.Test
             ClientPost post = new ClientPost
             {
                 CPF = Guid.NewGuid().ToString().Substring(0, 11),
-                Nome = "IntegrationTest-Client",
-                Estado = "RR"
+                Name = "IntegrationTest-Client",
+                State = "RR"
             };
 
             // Act

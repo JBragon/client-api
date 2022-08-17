@@ -5,8 +5,8 @@ namespace Models.Mapper.Request
 {
     public class ClientPost
     {
-        public string Nome { get; set; }
-        public string Estado { get; set; }
+        public string Name { get; set; }
+        public string State { get; set; }
         public string CPF { get; set; }
     }
 
@@ -14,12 +14,12 @@ namespace Models.Mapper.Request
     {
         public ClientPostValidation()
         {
-            RuleFor(v => v.Nome)
+            RuleFor(v => v.Name)
               .NotEmpty()
               .WithMessage(RuleMessage.Informed("{PropertyName}"))
               .MaximumLength(255);
 
-            RuleFor(v => v.Estado)
+            RuleFor(v => v.State)
              .NotEmpty()
              .WithMessage(RuleMessage.Informed("{PropertyName}"))
              .MaximumLength(2);

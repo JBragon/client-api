@@ -10,14 +10,10 @@ namespace WebApi.Configurations
         public AutoMapperConfig()
         {
             CreateMap<Client, ClientPost>()
-                .ForMember(c => c.Nome, source => source.MapFrom(source => source.Name))
-                .ForMember(c => c.Estado, source => source.MapFrom(source => source.State))
                 .ReverseMap()
                 .ForMember(d => d.CPF, opt => opt.MapFrom(s => s.CPF.Replace(".", "").Replace("-", "")));
 
             CreateMap<Client, ClientResponse>()
-                .ForMember(c => c.Nome, source => source.MapFrom(source => source.Name))
-                .ForMember(c => c.Estado, source => source.MapFrom(source => source.State))
                 .ReverseMap();
         }
     }
