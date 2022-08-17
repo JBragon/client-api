@@ -28,8 +28,8 @@ namespace NBomberTest
                 ClientPost post = new ClientPost
                 {
                     CPF = CPFUtils.GerarCpf(),
-                    Estado = "PT",
-                    Nome = $"PerformanceTest-Client {Guid.NewGuid()}"
+                    State = "PT",
+                    Name = $"PerformanceTest-Client {Guid.NewGuid()}"
                 };
 
                 var response = await httpClient.PostAsJsonAsync($"api/Client", post);
